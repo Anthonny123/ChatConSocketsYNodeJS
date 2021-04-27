@@ -29,6 +29,7 @@ const listen = (port) =>{
         socket.setEncoding('utf-8');
 
         socket.on('data', (message) =>{
+            connections.values();
             if(!connections.has(socket)){
                 console.log(`Username ${message} set for connection ${remoteSocket}`);
                 connections.set(socket, message);
@@ -52,7 +53,7 @@ const listen = (port) =>{
     });
 
     server.listen({port, host}, () =>{
-        console.log('Listening on port 8000');
+        console.log(`Listening on port ${port}`);
     });
 
     server.on('error', (err)=>{error(err.message)});
